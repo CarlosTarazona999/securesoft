@@ -3,10 +3,10 @@
 class Conexion{
     public static function conectar()
         {
-            $host = '51.161.34.107';
-            $db = 'jun21cod_IBLabora';
-            $user = 'jun21cod_labora';
-            $pass = '123abc,.-iblabora';
+            $host = '127.0.0.1';
+            $db = 'bdform';
+            $user = 'root';
+            $pass = '';
             
 
             $cadena = 'mysql:host='.$host.';dbname='.$db.';charset=utf8';  
