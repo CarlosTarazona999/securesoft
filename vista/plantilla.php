@@ -7,7 +7,7 @@ include 'modulos/header.php';
 <body>
 	<?php
 	//include "modulos/menuVISTA.php";
-	include "modulos/experiencia.php";
+	include "modulos/producto.php";
 	//include "modulos/footerVISTA.php";
 	?>
 	<?php

@@ -1,10 +1,10 @@
-function eliminarExperiencia(e) {
+function eliminarProducto(e) {
   var a = {
     cod: e,
   };
   $.ajax({
     data: a,
-    url: "ajax/Experiencia.ajax.php",
+    url: "ajax/Producto.ajax.php",
     type: "POST",
     success: function () {
       Swal.fire("Eliminado", "Click en OK!", "success"), location.reload();
@@ -25,7 +25,7 @@ $(document).ready(function () {
       url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json",
     },
     ajax: {
-      url: "https://iblabora.com/ajax/Experiencia.ajax.php",
+      url: "https://localhost:8080/securesoft/ajax/Producto.ajax.php",
       dataSrc: "",
     },
     columns: [
@@ -33,16 +33,19 @@ $(document).ready(function () {
         data: "numero",
       },
       {
-        data: "empresa",
+        data: "Producto",
       },
       {
-        data: "cargo",
+        data: "Categoria",
       },
       {
-        data: "fecha_ini",
+        data: "Precio",
       },
       {
-        data: "fecah_fin",
+        data: "Stock",
+      },
+      {
+        data: "Imagen",
       },
       {
         data: "option",
@@ -55,18 +58,16 @@ $(document).ready(function () {
   });
 }),
   $("#tablaexp").DataTable();
-var e = document.getElementById("ac"),
-  dt1 = document.getElementById("periodo"),
-  dt2 = document.getElementById("mes");
+var e = document.getElementById("ac"),  dt1 = document.getElementById("periodo"),  dt2 = document.getElementById("mes");
 e.addEventListener("change", validaCheckbox, !1);
-var formExp = document.querySelector("#formExp");
-formExp.onsubmit = function (e) {
+var formProducto = document.querySelector("#formProducto");
+formProducto.onsubmit = function (e) {
   e.preventDefault();
   var a = window.XMLHttpRequest
       ? new XMLHttpRequest()
       : new ActiveXObject("Microsoft.XMLHTTP"),
-    t = "ajax/Experiencia.ajax.php",
-    r = new FormData(formExp);
+    t = "ajax/Producto.ajax.php",
+    r = new FormData(formProducto);
   a.open("POST", t, !0),
     a.send(r),
     (a.onreadystatechange = function () {

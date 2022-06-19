@@ -10,7 +10,7 @@
 <script src="vista/js/datatables.js"></script>
 <script src="vista/js/sweetalert.js"></script>
 <!---- FUNCTIONS---->
-<script src="vista/js/functions_experiencia.js"></script>
+<script src="vista/js/functions_producto.js"></script>
 <script src="vista/js/validaciones.js"></script>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
