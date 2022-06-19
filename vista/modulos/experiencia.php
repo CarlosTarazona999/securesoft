@@ -4,10 +4,6 @@
             <h5 class="mt-2 font-weight-bold">Formulario de gestión de productos</h5>
         </div>
         <div class="d-flex flex-column align-items-center texto-labels ml-5 text-muted">
-            <?php
-            $enviar = new ExperienciaLaboral();
-            $dato = $enviar->ObtenerCargos();
-            ?>
             <form method="POST" class="needs-validation d-flex flex-column flex-wrap p-3" style="width: 100%;" id="formExp">
                 <div class="row">
                     <div class="col-lg-4 col-md-12 col-sm-12 d-flex flex-column align-items-left fig1">
@@ -29,8 +25,8 @@
                             //     echo '<img src="vista/images/foto-por-defecto.png" alt="" class="rounded-circle imgdp">';
                             // }
                             ?>
-                            
-                            <input type="file" id="aea" name="file"/>
+
+                            <input type="file" id="aea" name="file" />
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 d-flex flex-column align-items-left fig1">

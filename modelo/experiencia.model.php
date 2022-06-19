@@ -1,7 +1,7 @@
 <?php 
 require_once 'conexion.php';
 
-class ExperienciaLaboralModel{
+class ProductoModelo{
     private $db;
 
     public function __construct()
@@ -10,16 +10,17 @@ class ExperienciaLaboralModel{
     }
 
     
-    public function anadirExperiencia(int $idusuario, string $empresa,string $cargo,string $fechainicion, $fechafinal){
+    public function anadirExperiencia(int $idusuario, string $producto,string $cargo,string $fechainicion, $fechafinal){
         
-        $sql = "INSERT INTO expe_laboral(idusuario, empresa, cargo, fecha_ini, fecah_fin) VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO productos(Id, Producto, Categoria, Precio, Stock, Imagen) VALUES (?,?,?,?,?,?)";
         
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(1,$idusuario, PDO::PARAM_INT);
-        $stmt->bindParam(2,$empresa, PDO::PARAM_STR);
-        $stmt->bindParam(3,$cargo, PDO::PARAM_STR);
-        $stmt->bindParam(4,$fechainicion, PDO::PARAM_STR);
-        $stmt->bindParam(5,$fechafinal, PDO::PARAM_STR);
+        $stmt->bindParam(1,$id, PDO::PARAM_INT);
+        $stmt->bindParam(2,$producto, PDO::PARAM_STR);
+        $stmt->bindParam(3,$categoria, PDO::PARAM_STR);
+        $stmt->bindParam(4,$precio, PDO::PARAM_INT);
+        $stmt->bindParam(5,$stock, PDO::PARAM_INT);
+        $stmt->bindParam(6,$imagen, PDO::PARAM_STR);
         
         $stmt->execute();
         return $stmt;
@@ -31,7 +32,7 @@ class ExperienciaLaboralModel{
 
         if ($valor != null) {
             
-            $stmt = Conexion::conectar()->prepare("SELECT expe.idexpe_laboral, expe.empresa, car.tipo_cargo as cargo, expe.fecha_ini, expe.fecah_fin FROM expe_laboral as expe INNER JOIN cargo as car ON car.idcargo = expe.cargo WHERE idusuario = ?");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM productos WHERE Id = ?");
             $stmt->bindParam(1, $valor, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +44,7 @@ class ExperienciaLaboralModel{
 
     public function eliminarExperiencia($valor){
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM expe_laboral WHERE idexpe_laboral =". $valor);
+        $stmt = Conexion::conectar()->prepare("DELETE FROM productos WHERE idproductos =". $valor);
         $stmt->execute();
         if($stmt){
             return "ok";
@@ -54,17 +55,9 @@ class ExperienciaLaboralModel{
         $stmt =null;
     }
 
-    public function selectCargo(){
-            
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM cargo");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-
-    public function existeExp(string $empresa, int $valor){
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM expe_laboral WHERE empresa = ? AND idusuario = ?");
-        $stmt->bindParam(1, $empresa, PDO::PARAM_STR);
+    public function existeProducto(string $producto, int $valor){
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM productos WHERE Producto = ? AND Id = ?");
+        $stmt->bindParam(1, $producto, PDO::PARAM_STR);
         $stmt->bindParam(2, $valor, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
