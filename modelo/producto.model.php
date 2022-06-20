@@ -44,7 +44,6 @@ class ProductoModelo{
 
         $stmt = Conexion::conectar()->prepare("SELECT * FROM productos");
         if ($stmt != null) {
-            $stmt->bindParam(1, $valor, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -52,15 +51,6 @@ class ProductoModelo{
             return "no hay datos en la condicion";
         }
     }
-    // public function existeProducto(string $producto, int $valor){
-    //     $stmt = Conexion::conectar()->prepare("SELECT * FROM productos WHERE Producto = ? AND Id = ?");
-    //     $stmt->bindParam(1, $producto, PDO::PARAM_STR);
-    //     $stmt->bindParam(2, $valor, PDO::PARAM_INT);
-    //     $stmt->execute();
-    //     return $stmt->fetchAll();
-    //     $stmt->close();
-    //     $stmt =null;
-    // }
 
     public function selectDPostulante($item){
 
@@ -78,7 +68,7 @@ class ProductoModelo{
 
     public function eliminarProducto($valor){
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM productos WHERE idproductos =". $valor);
+        $stmt = Conexion::conectar()->prepare("DELETE FROM productos WHERE Id =". $valor);
         $stmt->execute();
         if($stmt){
             return "ok";

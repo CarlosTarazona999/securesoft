@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="row container">
                     <div class="container card table-responsive table-hover p-4" style="width: 100%; height: 419px;">
-                        <table id="tablaexp" class="display text-left" style="width:100%">
+                        <table id="tablaProducto" class="display text-left" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Id</th>

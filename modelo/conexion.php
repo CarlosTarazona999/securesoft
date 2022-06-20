@@ -3,13 +3,13 @@
 class Conexion{
     public static function conectar()
         {
-            $host = '127.0.0.1';
+            $host = '127.0.0.1:33065';
             $db = 'bdform';
             $user = 'root';
             $pass = '';
             
 
-            $cadena = 'mysql:host='.$host.';dbname='.$db.';charset=utf8';  
+            $cadena = 'mysql:host='.$host.';dbname='.$db.';charset=utf8';
             try{
                 $conect = new PDO($cadena,$user,$pass);
                 $conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -19,4 +19,4 @@ class Conexion{
                 echo "Error ". $e->getMessage();
             }
         }
-}
+    }

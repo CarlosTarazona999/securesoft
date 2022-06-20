@@ -12,20 +12,16 @@ function eliminarProducto(e) {
   });
 }
 
-function validaCheckbox() {
-  var a = e.checked;
-  a && (dt1.removeAttribute("required"), dt2.removeAttribute("required"));
-}
 var dateTable;
 $(document).ready(function () {
-  $("#tablaexp").dataTable({
+  $("#tablaProducto").dataTable({
     aProcessing: !0,
     aServerSide: !0,
     language: {
       url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json",
     },
     ajax: {
-      url: "https://localhost:8080/securesoft/ajax/Producto.ajax.php",
+      url: "http://localhost:8080/securesoft/ajax/Producto.ajax.php",
       dataSrc: "",
     },
     columns: [
@@ -57,9 +53,8 @@ $(document).ready(function () {
     order: [[0, "asc"]],
   });
 }),
-  $("#tablaexp").DataTable();
-var e = document.getElementById("ac"),  dt1 = document.getElementById("periodo"),  dt2 = document.getElementById("mes");
-e.addEventListener("change", validaCheckbox, !1);
+  $("#tablaProducto").DataTable();
+
 var formProducto = document.querySelector("#formProducto");
 formProducto.onsubmit = function (e) {
   e.preventDefault();
